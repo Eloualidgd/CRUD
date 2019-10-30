@@ -15,6 +15,13 @@ require '../Model/connection.php';
 
 <body>
 <h2>Clasview</h2>
+<br><br>
+
+<a href="studentview.php"> Click for the Student Form</a>
+<br><br>
+
+<a href="teacherview.php"> Click for the Teacher Form</a>
+<br><br>
 <table>
     <thead>
     <tr>
@@ -25,6 +32,25 @@ require '../Model/connection.php';
     </tr>
     </thead>
     <tbody>
+    <form action="" method="post">
+
+        Name:<br>
+        <input type="text" name="name" placeholder="name">
+        <br>
+        Location:<br>
+        <input type="text" name="location" placeholder="location">
+        <br>
+        Assigned Teacher:<br>
+        <input type="text" name="assigned_teacher" placeholder="assigned teacher">
+        <br>
+        Assigned Student:<br>
+        <input type="text" name="assigned_student" placeholder="assigned student">
+        <br><br>
+        <input type="submit" value="Submit">
+
+
+    </form>
+    <br><br>
 
     <?php
 
@@ -39,7 +65,7 @@ require '../Model/connection.php';
 
 
         $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
-    VALUES (:name, :location, :assigned_teacher, :assigned_student)");
+         VALUES (:name, :location, :assigned_teacher, :assigned_student)");
 
 
         $stmt->bindParam(':name', $name);
@@ -63,24 +89,7 @@ require '../Model/connection.php';
     </tbody>
 </table>
 
-<form action="" method="post">
 
-    Name:<br>
-    <input type="text" name="name" placeholder="name">
-    <br>
-    Location:<br>
-    <input type="text" name="location" placeholder="location">
-    <br>
-    Assigned Teacher:<br>
-    <input type="text" name="assigned_teacher" placeholder="assigned teacher">
-    <br>
-    Assigned Student:<br>
-    <input type="text" name="assigned_student" placeholder="assigned student">
-    <br><br>
-    <input type="submit" value="Submit">
-
-
-</form>
 
 </body>
 </html>

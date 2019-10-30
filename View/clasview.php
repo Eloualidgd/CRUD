@@ -28,23 +28,20 @@ require '../Model/connection.php';
     <?php
 
 
-    if (isset($_POST['name'],$_POST['location'],
-        $_POST['email'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
+    if (isset($_POST['name'],$_POST['location'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
 
 
         $name = $_POST['name'];
         $location = $_POST['location'];
-        $email = $_POST['email'];
         $assigned_teacher = $_POST['assigned_teacher'];
         $assigned_student = $_POST['assigned_student'];
 
 
-        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, email, assigned_teacher, assigned_student)
-    VALUES (:name, :location, :email, :assigned_teacher, :assigned_student)");
+        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
+    VALUES (:name, :location, :assigned_teacher, :assigned_student)");
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':location', $location);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':assigned_teacher', $assigned_teacher);
         $stmt->bindParam(':assigned_student', $assigned_student);
 
@@ -60,7 +57,6 @@ require '../Model/connection.php';
         <tr>
             <td><?php echo $line['name'] ?></td>
             <td><?php echo $line['location'] ?></td>
-            <td><?php echo $line['email'] ?></td>
             <td><?php echo $line['assigned_teacher'] ?></td>
             <td><?php echo $line['assigned_student'] ?></td>
 
@@ -77,11 +73,11 @@ require '../Model/connection.php';
     Location:<br>
     <input type="text" name="location" placeholder="location">
     <br>
-    Email:<br>
-    <input type="text" name="email" placeholder="email">
+    Assigned Teacher:<br>
+    <input type="text" name="assigned_teacher" placeholder="assigned teacher">
     <br>
-    Email:<br>
-    <input type="text" name="email" placeholder="email">
+    Assigned Student:<br>
+    <input type="text" name="assigned_student" placeholder="assigned student">
     <br><br>
     <input type="submit" value="Submit">
 

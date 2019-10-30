@@ -14,7 +14,8 @@ require '../Model/connection.php';
 </head>
 
 <body>
-<h2>Clasview</h2><table>
+<h2>Clasview</h2>
+<table>
     <thead>
     <tr>
         <td>Name</td>
@@ -27,27 +28,19 @@ require '../Model/connection.php';
 
     <?php
 
-<<<<<<< HEAD
 
-    if (isset($_POST['name'],$_POST['location'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
+    if (isset($_POST['name'], $_POST['location'], $_POST['assigned_teacher'], $_POST['assigned_student'])) {
 
-=======
-    if (isset($_POST['name'],$_POST['location'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
->>>>>>> ae2f8118233a91ffd16bdfff20c9d3c018b82c87
 
         $name = $_POST['name'];
         $location = $_POST['location'];
         $assigned_teacher = $_POST['assigned_teacher'];
         $assigned_student = $_POST['assigned_student'];
 
-<<<<<<< HEAD
 
         $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
     VALUES (:name, :location, :assigned_teacher, :assigned_student)");
-=======
-        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
-            VALUES (:name, :location, :assigned_teacher, :assigned_student)");
->>>>>>> ae2f8118233a91ffd16bdfff20c9d3c018b82c87
+
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':location', $location);

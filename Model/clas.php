@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 class clas
 {
@@ -10,7 +10,6 @@ class clas
     private $assigned_teacher;
     private $assigned_student;
 
-
     public function __construct($name, $location, $assigned_teacher, $assigned_student)
     {
         $this->name = $name;
@@ -19,18 +18,15 @@ class clas
         $this->assigned_student = $assigned_student;
     }
 
-
     public function getName()
     {
         return $this->name;
     }
 
-
     public function getLocation()
     {
         return $this->location;
     }
-
 
     public function getAssignedTeacher()
     {
@@ -41,7 +37,4 @@ class clas
     {
         return $this->assigned_student;
     }
-
-
-
 }

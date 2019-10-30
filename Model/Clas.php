@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class clas
+class Clas
 {
 
     private $name;

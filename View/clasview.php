@@ -12,14 +12,21 @@
     <title>Form clas</title>
 </head>
 <body>
+<h1>Class Form</h1>
 
 <form action="" method="post">
 
     Name:<br>
-    <input type="text" name="name" value="name">
+    <input type="text" name="name" placeholder="name">
     <br>
     Location:<br>
-    <input type="text" name="location" value="location">
+    <input type="text" name="location" placeholder="location">
+    <br>
+    Assigned Teacher:<br>
+    <input type="text" name="assigned_teacher" placeholder="assigned_teacher">
+    <br>
+    Assigned Student:<br>
+    <input type="text" name="assigned_student" placeholder="assigned_student">
     <br><br>
     <input type="submit" value="Submit">
 

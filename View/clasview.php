@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 require '../Model/connection.php';
 ?>
@@ -16,9 +17,8 @@ require '../Model/connection.php';
 <h2>Clasview</h2><table>
     <thead>
     <tr>
-        <td> Name</td>
+        <td>Name</td>
         <td>Location</td>
-        <td>E-mail</td>
         <td>Assigned Teacher</td>
         <td>Assigned Student</td>
     </tr>
@@ -27,32 +27,37 @@ require '../Model/connection.php';
 
     <?php
 
+<<<<<<< HEAD
 
     if (isset($_POST['name'],$_POST['location'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
 
+=======
+    if (isset($_POST['name'],$_POST['location'],$_POST['assigned_teacher'],$_POST['assigned_student'])) {
+>>>>>>> ae2f8118233a91ffd16bdfff20c9d3c018b82c87
 
         $name = $_POST['name'];
         $location = $_POST['location'];
         $assigned_teacher = $_POST['assigned_teacher'];
         $assigned_student = $_POST['assigned_student'];
 
+<<<<<<< HEAD
 
         $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
     VALUES (:name, :location, :assigned_teacher, :assigned_student)");
+=======
+        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
+            VALUES (:name, :location, :assigned_teacher, :assigned_student)");
+>>>>>>> ae2f8118233a91ffd16bdfff20c9d3c018b82c87
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':location', $location);
         $stmt->bindParam(':assigned_teacher', $assigned_teacher);
         $stmt->bindParam(':assigned_student', $assigned_student);
 
-
         $stmt->execute();
-
-
     }
 
-
-    $selectVar = 'SELECT name, location, email, assigned_teacher, assigned_student FROM clas ORDER BY ID';
+    $selectVar = 'SELECT name, location, assigned_teacher, assigned_student FROM clas ORDER BY ID';
     foreach ($connection->query($selectVar) as $line): ?>
         <tr>
             <td><?php echo $line['name'] ?></td>

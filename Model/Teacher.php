@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class tteacher
+class Teacher
 {
     private $name;
     private $email;

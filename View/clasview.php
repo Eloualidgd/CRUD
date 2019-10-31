@@ -1,6 +1,8 @@
 <?php
-
 declare(strict_types=1);
+ini_set('display_errors', "1");
+ini_set('display_startup_errors', "1");
+error_reporting(E_ALL);
 require '../Model/connection.php';
 ?>
 
@@ -55,34 +57,34 @@ require '../Model/connection.php';
     <?php
 
 
-    if (isset($_POST['name'], $_POST['location'], $_POST['assigned_teacher'], $_POST['assigned_student'])) {
+    if (isset($_POST['name'], $_POST['location'], $_POST['assigned_teacher'], $_POST['assigned_students'])) {
 
 
         $name = $_POST['name'];
         $location = $_POST['location'];
         $assigned_teacher = $_POST['assigned_teacher'];
-        $assigned_student = $_POST['assigned_student'];
+        $assigned_students = $_POST['assigned_students'];
 
 
-        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_student)
-         VALUES (:name, :location, :assigned_teacher, :assigned_student)");
+        $stmt = openConnection()->prepare("INSERT INTO clas (name, location, assigned_teacher, assigned_students)
+         VALUES (:name, :location, :assigned_teacher, :assigned_students)");
 
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':location', $location);
         $stmt->bindParam(':assigned_teacher', $assigned_teacher);
-        $stmt->bindParam(':assigned_student', $assigned_student);
+        $stmt->bindParam(':assigned_students', $assigned_students);
 
         $stmt->execute();
     }
 
-    $selectVar = 'SELECT name, location, assigned_teacher, assigned_student FROM clas ORDER BY ID';
+    $selectVar = 'SELECT name, location, assigned_teacher, assigned_students FROM clas ORDER BY ID';
     foreach ($connection->query($selectVar) as $line): ?>
         <tr>
             <td><?php echo $line['name'] ?></td>
             <td><?php echo $line['location'] ?></td>
             <td><?php echo $line['assigned_teacher'] ?></td>
-            <td><?php echo $line['assigned_student'] ?></td>
+            <td><?php echo $line['assigned_students'] ?></td>
 
         </tr>
     <?php endforeach; ?>

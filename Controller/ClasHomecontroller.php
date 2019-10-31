@@ -12,5 +12,4 @@ class ClasHomecontroller
         //load the view
         require 'View/clasview.php';
     }
-
 }

@@ -1,56 +1,88 @@
 <?php
 
+declare(strict_types=1);
+ini_set('display_errors', "1");
+ini_set('display_startup_errors', "1");
+error_reporting(E_ALL);
+require '../Controller/StudentHomecontroller.php';
 require '../Model/connection.php';
 
-if (isset($_POST['name'],$_POST['class'],$_POST['assigned_teacher'],$_POST['email'])) {
-//    $conn = new openConnection();
-    $name = $_POST['name'];
-    $class = $_POST['class'];
-    $assigned_teacher = $_POST['assigned_teacher'];
-    $email = $_POST['email'];
-
-    $stmt = openConnection()->prepare("INSERT INTO student (name, class, assigned_teacher, email)
-    VALUES (:name, :class, :assigned_teacher, :email)");
-
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':class', $class);
-    $stmt->bindParam(':assigned_teacher', $assigned_teacher);
-    $stmt->bindParam(':email', $email);
-
-    $stmt->execute();
-}
 ?>
 
-<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student form</title>
+    <title>Students</title>
 </head>
+
 <body>
-<h1>Student Form</h1>
-
-<form action="" method="post">
-
-    Name:<br>
-    <input type="text" name="name" placeholder="name">
-    <br>
-    Class:<br>
-    <input type="text" name="class" placeholder="class">
-    <br>
-    Assigned Teacher:<br>
-    <input type="text" name="assigned_teacher" placeholder="assigned_teacher">
-    <br>
-    Email:<br>
-    <input type="text" name="email" placeholder="email">
+    <h2>Student Overview</h2>
     <br><br>
-    <input type="submit" value="Submit">
 
+    <a href="clasview.php"> Click for the Class Form</a>
+    <br><br>
 
-</form>
+    <a href="teacherview.php"> Click for the Teacher Form</a>
+    <br><br>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>E-mail</td>
+                <td>Class</td>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="" method="post">
+                Name:<br>
+                <input type="text" name="name" placeholder="name">
+                <br>
+                E-mail:<br>
+                <input type="text" name="email" placeholder="email">
+                <br>
+                Class:<br>
+                <input type="text" name="class" placeholder="class">
+                <br>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+
+        <br><br>
+
+        <?php
+        var_dump($_POST);
+
+        if (isset($_POST['name'], $_POST['email'], $_POST['class'])) {
+
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $class = $_POST['class'];
+
+            $stmt = openConnection()->prepare("INSERT INTO student (name, email, class)
+                 VALUES (:name, :email, :class)");
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':class', $class);
+
+            $stmt->execute();
+        }
+
+        $selectVar = 'SELECT name, email, class FROM student ORDER BY ID';
+        foreach ($connection->query($selectVar) as $line): ?>
+            <tr>
+                <td><?php echo $line['name'] ?></td>
+                <td><?php echo $line['email'] ?></td>
+                <td><?php echo $line['class'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </body>
 </html>
+

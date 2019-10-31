@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php'
+require '../Model/connection.php';
 
 if (isset($_POST['name'],$_POST['class'],$_POST['assigned_teacher'],$_POST['email'])) {
 //    $conn = new openConnection();

@@ -15,6 +15,7 @@ require 'Model/Clas.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/ClasHomecontroller.php';
+require 'Controller/TeacherHomecontroller.php';
 
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
@@ -24,4 +25,5 @@ require 'Controller/ClasHomecontroller.php';
 echo "heey";
 
 $controller = new ClasHomecontroller();
+$controller = new TeacherHomecontroller();
 $controller->render();

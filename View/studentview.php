@@ -50,7 +50,7 @@ require '../Model/connection.php';
                     <select class="form-control mb-1" name="class" required>
                         <option value="1🇺🇸🇺🇸🇺🇸">Giertz</option>
                         <option value="2">Lamarr</option>
-                    </select></p>
+                    </select>
                 <br>
                 <br><br>
                 <input type="submit" value="Submit">

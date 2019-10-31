@@ -10,14 +10,13 @@ error_reporting(E_ALL);
 require 'Model/User.php';
 require 'Model/Student.php';
 require 'Model/Teacher.php';
-require 'Model/Class.php';
+require 'Model/Classroom.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/ClassHomecontroller.php';
 require 'Controller/TeacherHomecontroller.php';
 require 'Controller/StudentHomecontroller.php';
-
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!

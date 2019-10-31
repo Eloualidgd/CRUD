@@ -1,7 +1,8 @@
 <?php
 
+declare(strict_types = 1);
 
-class ClasHomecontroller
+class ClassHomecontroller
 {
     public function render()
     {

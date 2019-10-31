@@ -3,7 +3,7 @@ declare(strict_types=1);
 ini_set('display_errors', "1");
 ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
-require '../Controller/ClasHomecontroller.php';
+require '../Controller/ClassHomecontroller.php';
 require '../Model/connection.php';
 
 ?>
@@ -14,76 +14,64 @@ require '../Model/connection.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ClasView</title>
+    <title>Classes</title>
 </head>
 
 <body>
-<h2>Clasview</h2>
-<br><br>
-
-<a href="studentview.php"> Click for the Student Form</a>
-<br><br>
-
-<a href="teacherview.php"> Click for the Teacher Form</a>
-<br><br>
-<table>
-    <thead>
-    <tr>
-        <td>Name</td>
-        <td>Location</td>
-
-    </tr>
-    </thead>
-    <tbody>
-    <form action="" method="post">
-
-        Name:<br>
-        <input type="text" name="name" placeholder="name">
-        <br>
-        Location:<br>
-        <input type="text" name="location" placeholder="location">
-        <br>
-
-        <br><br>
-        <input type="submit" value="Submit">
-
-
-    </form>
+    <h2>Classes</h2>
     <br><br>
 
-    <?php
-    var_dump($_POST);
+    <a href="studentview.php"> Click for the Student Form</a>
+    <br><br>
 
-    if (isset($_POST['name'], $_POST['location'])) {
+    <a href="teacherview.php"> Click for the Teacher Form</a>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Location</td>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="" method="post">
+                Name:<br>
+                <input type="text" name="name" placeholder="name">
+                <br>
+                Location:<br>
+                <input type="text" name="location" placeholder="location">
+                <br>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        <br><br>
 
+        <?php
+        var_dump($_POST);
 
-        $name = $_POST['name'];
-        $location = $_POST['location'];
+        if (isset($_POST['name'], $_POST['location'])) {
 
+            $name = $_POST['name'];
+            $location = $_POST['location'];
 
-        $stmt = openConnection()->prepare("INSERT INTO classroom (name, location)
-         VALUES (:name, :location)");
+            $stmt = openConnection()->prepare("INSERT INTO classroom (name, location)
+             VALUES (:name, :location)");
 
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':location', $location);
 
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':location', $location);
+            $stmt->execute();
+        }
 
-        $stmt->execute();
-
-    }
-
-    $selectVar = 'SELECT name, location FROM classroom ORDER BY ID';
-    foreach ($connection->query($selectVar) as $line): ?>
-        <tr>
-            <td><?php echo $line['name'] ?></td>
-            <td><?php echo $line['location'] ?></td>
-
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-</table>
-
-
+        $selectVar = 'SELECT name, location FROM classroom ORDER BY ID';
+        foreach ($connection->query($selectVar) as $line): ?>
+            <tr>
+                <td><?php echo $line['name'] ?></td>
+                <td><?php echo $line['location'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </body>
 </html>

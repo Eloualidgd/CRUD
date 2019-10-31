@@ -10,11 +10,11 @@ error_reporting(E_ALL);
 require 'Model/User.php';
 require 'Model/Student.php';
 require 'Model/Teacher.php';
-require 'Model/Clas.php';
+require 'Model/Class.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
-require 'Controller/ClasHomecontroller.php';
+require 'Controller/ClassHomecontroller.php';
 require 'Controller/TeacherHomecontroller.php';
 require 'Controller/StudentHomecontroller.php';
 
@@ -25,7 +25,7 @@ require 'Controller/StudentHomecontroller.php';
 //$controller->render($_GET, $_POST);
 echo "heey";
 
-$controller = new ClasHomecontroller();
+$controller = new ClassHomecontroller();
 $controller = new TeacherHomecontroller();
 $controller = new StudentHomecontroller();
 $controller->render();

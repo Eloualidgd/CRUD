@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 class Class
 {
-
     private $name;
     private $location;
     private $assigned_teacher;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Class
+class Classroom
 {
     private $name;
     private $location;

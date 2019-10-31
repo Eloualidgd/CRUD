@@ -1,5 +1,24 @@
 <?php
 
+require 'connection.php'
+
+if (isset($_POST['name'],$_POST['class'],$_POST['assigned_teacher'],$_POST['email'])) {
+//    $conn = new openConnection();
+    $name = $_POST['name'];
+    $class = $_POST['class'];
+    $assigned_teacher = $_POST['assigned_teacher'];
+    $email = $_POST['email'];
+
+    $stmt = openConnection()->prepare("INSERT INTO student (name, class, assigned_teacher, email)
+    VALUES (:name, :class, :assigned_teacher, :email)");
+
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':class', $class);
+    $stmt->bindParam(':assigned_teacher', $assigned_teacher);
+    $stmt->bindParam(':email', $email);
+
+    $stmt->execute();
+}
 ?>
 
 <!doctype html>

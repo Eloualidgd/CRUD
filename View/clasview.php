@@ -42,7 +42,14 @@ require '../Model/connection.php';
                 <input type="text" name="name" placeholder="name">
                 <br>
                 Location:<br>
-                <input type="text" name="location" placeholder="location">
+                <select class="form-control mb-1" name="location" required>
+                    <option value="Brussel🇺🇸🇺🇸🇺🇸">Brussel</option>
+                    <option value="Antwerpen">Antwerpen</option>
+                    <option value="Gent">Gent</option>
+                    <option value="Hasselt">Hasselt</option>
+                    <option value="Luik">Luik</option>
+                    <option value="Charleroi">Charleroi</option>
+                </select>
                 <br>
                 <br><br>
                 <input type="submit" value="Submit">

@@ -39,13 +39,16 @@ require '../Model/connection.php';
         <tbody>
             <form action="" method="post">
                 Name:<br>
-                <input type="text" name="name" placeholder="name">
+                    <input type="text" name="name" placeholder="name">
                 <br>
                 E-mail:<br>
-                <input type="text" name="email" placeholder="email">
+                    <input type="text" name="email" placeholder="email">
                 <br>
                 Class:<br>
-                <input type="text" name="class" placeholder="class">
+                    <select class="form-control mb-1" name="class" required>
+                        <option value="1🇺🇸🇺🇸🇺🇸">Giertz</option>
+                        <option value="2">Lamarr</option>
+                    </select></p>
                 <br>
                 <br><br>
                 <input type="submit" value="Submit">
@@ -85,4 +88,3 @@ require '../Model/connection.php';
 
 </body>
 </html>
-
